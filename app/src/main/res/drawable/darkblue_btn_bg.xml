@@ -3,16 +3,16 @@
     
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="#1fb5e8"/>
-            <gradient android:startColor="#1fb5e8" android:endColor="#1fb5e8" android:angle="270"></gradient>
+            <solid android:color="@color/theme_color"/>
+            <gradient android:startColor="@color/theme_color" android:endColor="@color/theme_color" android:angle="270"></gradient>
             <corners android:radius="5dip"/>
         </shape>
     </item>
     
     <item android:state_pressed="false">
         <shape>
-            <solid android:color="#30bae9"/>
-            <gradient android:startColor="#30bae9" android:endColor="#30bae9" android:angle="270"></gradient>
+            <solid android:color="@color/theme_color"/>
+            <gradient android:startColor="@color/theme_color" android:endColor="@color/theme_color" android:angle="270"></gradient>
         	<corners android:radius="5dip"/>
         </shape>
     </item>

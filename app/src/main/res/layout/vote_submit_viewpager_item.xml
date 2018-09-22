@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#288df5" >
+        android:background="@color/theme_color" >
 
         <LinearLayout
             android:id="@+id/activity_prepare_test_upLayout"
@@ -55,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/home_menu_margin_8"
                 android:layout_marginTop="@dimen/home_menu_margin_5"
-                android:text="4/32" />        </LinearLayout>
+                android:text="4/32" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activity_prepare_test_errorLayout"

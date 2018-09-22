@@ -202,7 +202,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     edit.commit();
                     map.put(position, true);
                     holder.ivA.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvA.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvA.setTextColor(Color.parseColor("#333333"));
                     holder.ivB.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvB.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivC.setImageResource(R.drawable.ic_practice_test_normal);
@@ -223,7 +223,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     holder.ivA.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvA.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivB.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvB.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvB.setTextColor(Color.parseColor("#333333"));
                     holder.ivC.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvC.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivD.setImageResource(R.drawable.ic_practice_test_normal);
@@ -244,7 +244,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     holder.ivB.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvB.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivC.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvC.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvC.setTextColor(Color.parseColor("#333333"));
                     holder.ivD.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvD.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivE.setImageResource(R.drawable.ic_practice_test_normal);
@@ -265,7 +265,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     holder.ivC.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvC.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivD.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvD.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvD.setTextColor(Color.parseColor("#333333"));
                     holder.ivE.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvE.setTextColor(Color.parseColor("#9a9a9a"));
                 }
@@ -287,7 +287,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     holder.ivD.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvD.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivE.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvE.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvE.setTextColor(Color.parseColor("#333333"));
                 }
             });
         } else if (dataItems.get(position).getQuestionType().equals("1")) {
@@ -303,7 +303,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     }
                     if (flagA == 0) {
                         holder.ivA.setImageResource(R.drawable.ic_practice_test_select);
-                        holder.tvA.setTextColor(Color.parseColor("#2b89e9"));
+                        holder.tvA.setTextColor(Color.parseColor("#333333"));
                         flagA = 1;
                     } else {
                         holder.ivA.setImageResource(R.drawable.ic_practice_test_normal);
@@ -323,7 +323,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     }
                     if (flagB == 0) {
                         holder.ivB.setImageResource(R.drawable.ic_practice_test_select);
-                        holder.tvB.setTextColor(Color.parseColor("#2b89e9"));
+                        holder.tvB.setTextColor(Color.parseColor("#333333"));
                         flagB = 1;
                     } else {
                         holder.ivB.setImageResource(R.drawable.ic_practice_test_normal);
@@ -343,7 +343,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     }
                     if (flagC == 0) {
                         holder.ivC.setImageResource(R.drawable.ic_practice_test_select);
-                        holder.tvC.setTextColor(Color.parseColor("#2b89e9"));
+                        holder.tvC.setTextColor(Color.parseColor("#333333"));
                         flagC = 1;
                     } else {
                         holder.ivC.setImageResource(R.drawable.ic_practice_test_normal);
@@ -363,7 +363,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     }
                     if (flagD == 0) {
                         holder.ivD.setImageResource(R.drawable.ic_practice_test_select);
-                        holder.tvD.setTextColor(Color.parseColor("#2b89e9"));
+                        holder.tvD.setTextColor(Color.parseColor("#333333"));
                         flagD = 1;
                     } else {
                         holder.ivD.setImageResource(R.drawable.ic_practice_test_normal);
@@ -383,7 +383,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     }
                     if (flagE == 0) {
                         holder.ivE.setImageResource(R.drawable.ic_practice_test_select);
-                        holder.tvE.setTextColor(Color.parseColor("#2b89e9"));
+                        holder.tvE.setTextColor(Color.parseColor("#333333"));
                         flagE = 1;
                     } else {
                         holder.ivE.setImageResource(R.drawable.ic_practice_test_normal);
@@ -406,7 +406,7 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     edit.commit();
                     map.put(position, true);
                     holder.ivA.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvA.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvA.setTextColor(Color.parseColor("#333333"));
                     holder.ivB.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvB.setTextColor(Color.parseColor("#9a9a9a"));
                 }
@@ -421,12 +421,12 @@ public class SimulationExaminationAdapter extends PagerAdapter {
                     holder.ivA.setImageResource(R.drawable.ic_practice_test_normal);
                     holder.tvA.setTextColor(Color.parseColor("#9a9a9a"));
                     holder.ivB.setImageResource(R.drawable.ic_practice_test_select);
-                    holder.tvB.setTextColor(Color.parseColor("#2b89e9"));
+                    holder.tvB.setTextColor(Color.parseColor("#333333"));
                 }
             });
         }
 
-//                    ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.parseColor("#2b89e9"));
+//                    ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.parseColor("#333333"));
 //
 //                    SpannableStringBuilder builder1 = new SpannableStringBuilder(holder.question.getText().toString());
 //                    builder1.setSpan(blueSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

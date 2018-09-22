@@ -1,6 +1,5 @@
 package com.zcj.blg.phoneanswer.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,7 +11,6 @@ import com.zcj.blg.phoneanswer.R;
 import com.zcj.blg.phoneanswer.bean.User;
 import com.zcj.blg.phoneanswer.util.SharePreferencTools;
 
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -64,9 +62,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         final String name = etusername.getText().toString();
         final String password = etpassword.getText().toString();
         final String email = etemail.getText().toString();
-        BmobUser bu = new BmobUser();
+        User bu = new User();
         bu.setUsername(name);
         bu.setPassword(password);
+        bu.setUserNick("user_" + name);
         bu.setEmail(email);
         //注意：不能用save方法进行注册
         bu.signUp(new SaveListener<User>() {
@@ -74,14 +73,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void done(User user, BmobException e) {
                 if (e == null) {
                     Toast.makeText(RegisterActivity.this, "手机答题系统欢迎你" + user.getUsername(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    intent.putExtra("user", user);
-                    SharePreferencTools.putBoolean("login", true);
-                    startActivity(intent);
+                    MainActivity.startMainActivity(RegisterActivity.this, user.getUsername());
                     finish();
                 } else {
                     Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    SharePreferencTools.putBoolean("login", false);
                 }
             }
 

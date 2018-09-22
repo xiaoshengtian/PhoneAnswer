@@ -1401,7 +1401,7 @@ public class ExaminationSubmitAdapter extends PagerAdapter {
 			});
 		}
 
-		ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.parseColor("#2b89e9"));
+		ForegroundColorSpan blueSpan = new ForegroundColorSpan(Color.parseColor("#333333"));
 
 		SpannableStringBuilder builder1 = new SpannableStringBuilder(holder.question.getText().toString());
 		builder1.setSpan(blueSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

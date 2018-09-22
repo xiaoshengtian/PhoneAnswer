@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="50dp"
     android:background="@color/theme_color"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -11,8 +11,8 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="10dip" >
+        android:orientation="horizontal"
+        android:paddingLeft="10dip">
 
         <ImageView
             android:id="@+id/left"
@@ -24,6 +24,18 @@
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:paddingLeft="10dip" />
+
+        <TextView
+            android:id="@+id/left_text"
+            android:layout_width="50dip"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="医学"
+            android:textColor="@color/white"
+            android:textSize="18.0sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <TextView
@@ -33,8 +45,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ellipsize="end"
-        android:singleLine="true"
         android:gravity="center"
+        android:singleLine="true"
         android:textColor="@color/white"
         android:textSize="18.0sp" />
 
@@ -45,7 +57,7 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingRight="10dip" >
+        android:paddingRight="10dip">
 
         <TextView
             android:id="@+id/gps"

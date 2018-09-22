@@ -33,14 +33,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //这里的AppLication ID 写上自己创建项目得到的那个AppLication ID
-        boolean haslogin = SharePreferencTools.getBoolean("login", false);
-        if (!haslogin) {
+        BmobUser user = BmobUser.getCurrentUser(User.class);
+        if (user == null) {
             initialize();
         } else {
-            User user = BmobUser.getCurrentUser(User.class);
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("user", user);
-            startActivity(intent);
+            MainActivity.startMainActivity(this, user.getUsername());
             finish();
         }
     }
@@ -72,16 +69,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         public void done(BmobUser bmobUser, BmobException e) {
                             if (e == null) {
                                 User user = BmobUser.getCurrentUser(User.class);
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("user", user);
-                                startActivity(intent);
-                                SharePreferencTools.putBoolean("login", true);
+                                MainActivity.startMainActivity(LoginActivity.this, user.getUsername());
                                 //登录成功
                                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
                                 Log.d(TAG, "done: " + e);
-                                SharePreferencTools.putBoolean("login", false);
                             }
                         }
 

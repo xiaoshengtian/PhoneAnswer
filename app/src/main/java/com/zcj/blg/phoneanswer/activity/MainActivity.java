@@ -2,11 +2,14 @@ package com.zcj.blg.phoneanswer.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -18,12 +21,14 @@ import com.zcj.blg.phoneanswer.bean.AnSwerInfo;
 import com.zcj.blg.phoneanswer.database.DataBaseHelper;
 import com.zcj.blg.phoneanswer.database.DataBaseManager;
 import com.zcj.blg.phoneanswer.util.FileUtils;
+import com.zcj.blg.phoneanswer.util.SharePreferencTools;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+import cn.bmob.v3.BmobUser;
 
 
 public class MainActivity extends Activity {
@@ -33,35 +38,57 @@ public class MainActivity extends Activity {
     private TextView b_vide;
     private TextView b_wrontest;
     private TextView b_input;
-
+    private TextView b_logout;
     private static final int REQUEST_CHOOSER = 1234;
 
     private ImageView left;
+    private TextView left_text;
     private TextView title;
+    private TextView right;
     private DataBaseHelper myDbHelper;
     private SQLiteDatabase db;
     private DataBaseManager dataBaseManager;
     private String[] set_way;
+    private String[] objects;
     private AnSwerInfo anSwerInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String userName = getIntent().getStringExtra("userName");
         left = (ImageView) findViewById(R.id.left);
+        right = (TextView) findViewById(R.id.right);
         title = (TextView) findViewById(R.id.title);
+        left_text = (TextView) findViewById(R.id.left_text);
         b_simtest = (TextView) findViewById(R.id.b_simtest);
         b_rantest = (TextView) findViewById(R.id.b_randtest);
         b_vide = (TextView) findViewById(R.id.b_video);
         b_wrontest = (TextView) findViewById(R.id.b_wrongtest);
         b_input = (TextView) findViewById(R.id.b_input);
+        b_logout = (TextView) findViewById(R.id.b_logout);
+        String object = SharePreferencTools.getString("selectObject", null);
+        if (TextUtils.isEmpty(object)) {
+            showSelectDialog();
+        } else {
+            left_text.setText(object);
+        }
         //拷贝数据库
         copyDB();
 
-
+        left_text.setVisibility(View.VISIBLE);
         left.setVisibility(View.GONE);
         title.setText("答题测试");
-
+        Log.d(MainActivity.class.getName(), "onCreate: " + userName);
+        if (!TextUtils.isEmpty(userName)) {
+            right.setText(userName);
+        }
+        left_text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSelectDialog();
+            }
+        });
         //模拟考试
         b_simtest.setOnClickListener(new OnClickListener() {
 
@@ -131,20 +158,49 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this, VideoListActivity.class);
                 startActivity(intent);
             }
+
         });
 
-        //导入数据库
+        //个人信息
         b_input.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent getContentIntent = FileUtils.createGetContentIntent();
-                Intent intent = Intent.createChooser(getContentIntent, "Select a file");
-                startActivityForResult(intent, REQUEST_CHOOSER);
-
+                Intent intent = new Intent(MainActivity.this, PersonalInfoActivity.class);
+                startActivity(intent);
             }
         });
 
+        b_logout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BmobUser.logOut();
+                SharePreferencTools.putString("selectObject",null);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
+    public static void startMainActivity(Context context, String userName) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("userName", userName);
+        context.startActivity(intent);
+    }
+
+    private void showSelectDialog() {
+        objects = new String[]{"医学"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("请选择学科！");
+        builder.setCancelable(false);
+        builder.setItems(objects, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                left_text.setText(objects[which]);
+                SharePreferencTools.putString("selectObject", objects[which]);
+            }
+        });
+        builder.show();
     }
 
     /**
@@ -279,7 +335,7 @@ public class MainActivity extends Activity {
     private void copyDB() {
         //加载数据库 拷贝(第一次) 读取(第二次)
         //判断数据库是否存在
-        String path = "/data/data/com.zcj.blg.phoneanswer/databases/TestData.db";
+        String path = "/data/data/com.example.answer/databases/TestData.db";
         File file = new File(path);
         System.out.println(file.exists());
         //创建数据库助手类

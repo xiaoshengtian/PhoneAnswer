@@ -13,7 +13,7 @@
             android:id="@+id/dialog_title"
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
-            android:background="#288DF5"
+            android:background="@color/theme_color"
             android:gravity="center_vertical"
             android:paddingLeft="20.0dip"
             android:text="提示"

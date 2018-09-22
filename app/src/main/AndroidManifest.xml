@@ -48,29 +48,30 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="activity.MyErrorQuestionActivity"
+            android:name=".activity.MyErrorQuestionActivity"
             android:configChanges="keyboardHidden|navigation|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="activity.MyErrorQuestionDetailActivity"
+            android:name=".activity.MyErrorQuestionDetailActivity"
             android:configChanges="keyboardHidden|navigation|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="activity.FullVideoActivity"
+            android:name=".activity.FullVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="activity.VideoListActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".activity.VideoListActivity"
             android:screenOrientation="portrait" />
-
         <activity
-            android:name="activity.FileChooserActivity"
+            android:name=".activity.PersonalInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.FileChooserActivity"
             android:exported="true"
             android:icon="@drawable/ic_chooser"
             android:label="@string/choose_file">
