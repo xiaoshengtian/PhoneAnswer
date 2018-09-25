@@ -51,6 +51,8 @@ public class MainActivity extends Activity {
     private String[] set_way;
     private String[] objects;
     private AnSwerInfo anSwerInfo;
+    private TextView b_add;
+    private TextView b_rule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class MainActivity extends Activity {
         b_wrontest = (TextView) findViewById(R.id.b_wrongtest);
         b_input = (TextView) findViewById(R.id.b_input);
         b_logout = (TextView) findViewById(R.id.b_logout);
+        b_add = (TextView) findViewById(R.id.b_add);
+        b_rule = (TextView) findViewById(R.id.b_rule);
         String object = SharePreferencTools.getString("selectObject", null);
         if (TextUtils.isEmpty(object)) {
             showSelectDialog();
@@ -174,10 +178,26 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 BmobUser.logOut();
-                SharePreferencTools.putString("selectObject",null);
+                SharePreferencTools.putString("selectObject", null);
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        b_add.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent getContentIntent = FileUtils.createGetContentIntent();
+                Intent intent = Intent.createChooser(getContentIntent, "Select a file");
+                startActivityForResult(intent, REQUEST_CHOOSER);
+
+            }
+        });
+        b_rule.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
         });
     }
